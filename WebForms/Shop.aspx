@@ -15,8 +15,14 @@
             Opis:<asp:TextBox ID="tbDescription" runat="server"></asp:TextBox>
             <br />
             <br />
-            <asp:GridView ID="gvProducts" runat="server">
+            <asp:GridView ID="gvProducts" runat="server" AutoGenerateColumns="False" DataKeyNames="Id" DataSourceID="WebFormsLabosDb">
+                <Columns>
+                    <asp:BoundField DataField="Id" HeaderText="Id" InsertVisible="False" ReadOnly="True" SortExpression="Id" />
+                    <asp:BoundField DataField="Name" HeaderText="Name" SortExpression="Name" />
+                    <asp:BoundField DataField="Description" HeaderText="Description" SortExpression="Description" />
+                </Columns>
             </asp:GridView>
+            <asp:SqlDataSource ID="WebFormsLabosDb" runat="server" ConnectionString="<%$ ConnectionStrings:WebFormsLabosConnectionString %>" ProviderName="<%$ ConnectionStrings:WebFormsLabosConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [Products]"></asp:SqlDataSource>
         </div>
     </form>
 </body>
